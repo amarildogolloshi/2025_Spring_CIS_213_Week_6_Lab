@@ -1,4 +1,4 @@
-const GiphyAPISearch = ({gif}) => {
+const GiphyDisplay = ({gif}) => {
     return(
         <div className="display-gif">
             <img src={gif.images.fixed_height.url} alt={globalThis.title} />
@@ -6,4 +6,4 @@ const GiphyAPISearch = ({gif}) => {
     )
 }
 
-export default GiphyAPISearch
+export default GiphyDisplay

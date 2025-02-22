@@ -1,35 +1,31 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import GiphyForm from './components/GiphyForm'
-import GiphyAPISearch from './components/GiphyAPISearch'
-import axios from 'axios'
+import GiphyAPISearch from './components/GiphyDisplay'
+import Header from './components/Header'
 
 function App() {
   const  apiKey = 'DuEmcsDK1Q3XkzHVTQE0iZzjcKPtAVof';
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("cat");
   const [gif , setGif] = useState(null);
   
-
   useEffect( () => {
-    console.log("useEffect")
-    console.log(query);
-    
-    const fetchData = async () => {
-      const response = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${query}&limit=1`);
-      setGif(response.data.data[0]);
-
+    if (query){
+      fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${query}&limit=1`)
+      .then( (response) => response.json() )
+      .then( (json) => {
+        setGif(json.data[0])
+      })
+      .catch( (error) => {
+        console.log('Error fetching data:', error);
+      })
     }
-
-    fetchData();
-
-
   }, [query] );
 
   return (
     <div className='container'>
-      <GiphyForm query={query} setQueryApp={setQuery} / >
+      <Header />
+      <GiphyForm query={query} setQueryApp={setQuery} />
 
       {
         typeof gif === 'object' && gif !== null ? (

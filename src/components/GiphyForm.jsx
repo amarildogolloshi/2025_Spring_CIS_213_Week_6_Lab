@@ -9,19 +9,25 @@ const GiphyForm = ({ setQueryApp }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         setQueryApp(query)
     }
     
     return(
-        <div className="form-group">
-            <form onSubmit={handleSubmit}>
-                <label>Enter a word or phrase:</label>
-                <input 
-                    type="text" 
-                    value={query}
-                    onChange={ (e) => { handleInput(e) } }
-                    placeholder="cat" />
-                <button type="submit">Search</button>
+        <div className="">
+            <form onSubmit={handleSubmit} className="form-group">
+                <div className="input-group">
+                    <label>Enter a word or phrase:</label>
+                    <input 
+                        type="text" 
+                        value={query}
+                        onChange={ (e) => { handleInput(e) } }
+                        placeholder="cat" />
+                </div>
+                <div className="input-group">
+                    <button type="submit">Search</button>
+                </div>
+                
             </form>
             
         </div>
