@@ -4,8 +4,10 @@ import GiphyForm from './components/GiphyForm'
 import GiphyAPISearch from './components/GiphyDisplay'
 import Header from './components/Header'
 
+
+
 function App() {
-  const  apiKey = 'DuEmcsDK1Q3XkzHVTQE0iZzjcKPtAVof';
+  const apiKey =  import.meta.env.VITE_GIPHY_API_KEY;
   const [query, setQuery] = useState("cat");
   const [gif , setGif] = useState(null);
   
